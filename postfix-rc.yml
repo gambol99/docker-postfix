@@ -1,0 +1,46 @@
+#
+#   Author: Rohith
+#   Date: 2015-07-17 14:38:11 +0100 (Fri, 17 Jul 2015)
+#
+#  vim:ts=2:sw=2:et
+#
+---
+
+apiVersion: v1beta3
+kind: ReplicationController
+metadata:
+  name: mail
+spec:
+  replicas: 1
+  selector:
+    name: mail
+  template:
+    metadata:
+      labels:
+        name: mail
+    spec:
+      containers:
+      - name: postfix
+        image: gambol99/postfix
+        ports:
+        - containerPort: 25
+        env:
+        - name: TLS_ENABLED
+          value: TRUE
+        - name: TLS_CERT_FILE
+          value: /etc/ssl/private/postfix-cert
+        - name: TLS_KEY_FILE:
+          value: /etc/ssl/private/postfix-key
+        - name: RELAY_HOST
+          value: email-smtp.eu-west-1.amazonaws.com:25
+        - name: MYHOSTNAME
+          value: mail
+        - name: MYDOMAIN
+          value: exmaple.com
+        volumeMounts:
+          - name: certs
+            mountPath: /etc/ssl/private
+      volumes:
+      - name: certs
+        secret:
+          secretName: mail-secrets

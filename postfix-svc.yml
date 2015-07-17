@@ -1,0 +1,19 @@
+#
+#   Author: Rohith
+#   Date: 2015-07-17 14:38:08 +0100 (Fri, 17 Jul 2015)
+#
+#  vim:ts=2:sw=2:et
+#
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: mail
+  name: mail
+spec:
+  ports:
+    - name: smtp
+      port: 25
+      targetPort: 25
+  selector:
+    name: mail
