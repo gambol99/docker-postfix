@@ -7,3 +7,4 @@
 *.swp
 sasl.passwd
 sasl.passwd.db
+postfix-sasl.yml

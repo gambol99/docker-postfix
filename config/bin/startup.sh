@@ -53,6 +53,17 @@ postconf() {
   /usr/sbin/postconf -e "${setting}"="${value}" || failed "unable to set configuration for, ${setting}=${value}"
 }
 
+#
+# Iterates the environment variables and pull out any postfix configuration
+provision_postfix() {
+  while read setting value; do
+    if [[ "$setting" =~ ^POSTFIX_.*$ ]]; then
+      arg=$(echo $setting | tr 'A-Z' 'a-z' | sed '/POSTFIX_//')
+      postconf "$arg" "$value"
+    fi
+  done < <(set)
+}
+
 provision_relay_host() {
   annonce "Configuring the Postfix Relay Host: ${RELAY_HOST}"
   postconf "relayhost" "${RELAY_HOST}"

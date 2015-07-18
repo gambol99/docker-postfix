@@ -27,9 +27,11 @@ spec:
         - name: TLS_ENABLED
           value: 'TRUE'
         - name: TLS_CERT_FILE
-          value: /etc/ssl/private/postfix-cert
+          value: /etc/secrets/certs/postfix-cert
         - name: TLS_KEY_FILE
-          value: /etc/ssl/private/postfix-key
+          value: /etc/secrets/certs/postfix-key
+        - name: TLS_SASL_PASSWD
+          value: /etc/secrets/sasl/postfix-sasl
         - name: RELAY_HOST
           value: email-smtp.eu-west-1.amazonaws.com:25
         - name: MYHOSTNAME
@@ -38,8 +40,13 @@ spec:
           value: exmaple.com
         volumeMounts:
         - name: certs
-          mountPath: /etc/ssl/private
+          mountPath: /etc/secrets/certs
+        - name: sasl
+          mountPath: /etc/secrets/sasl
       volumes:
       - name: certs
         secret:
-          secretName: mail-secrets
+          secretName: mail-certs
+      - name: sasl
+        secret:
+          secretName: mail-sasl
