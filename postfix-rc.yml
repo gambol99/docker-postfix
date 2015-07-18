@@ -5,8 +5,7 @@
 #  vim:ts=2:sw=2:et
 #
 ---
-
-apiVersion: v1beta3
+apiVersion: v1
 kind: ReplicationController
 metadata:
   name: mail
@@ -21,15 +20,15 @@ spec:
     spec:
       containers:
       - name: postfix
-        image: gambol99/postfix
+        image: gambol99/postfix:latest
         ports:
         - containerPort: 25
         env:
         - name: TLS_ENABLED
-          value: TRUE
+          value: 'TRUE'
         - name: TLS_CERT_FILE
           value: /etc/ssl/private/postfix-cert
-        - name: TLS_KEY_FILE:
+        - name: TLS_KEY_FILE
           value: /etc/ssl/private/postfix-key
         - name: RELAY_HOST
           value: email-smtp.eu-west-1.amazonaws.com:25
@@ -38,8 +37,8 @@ spec:
         - name: MYDOMAIN
           value: exmaple.com
         volumeMounts:
-          - name: certs
-            mountPath: /etc/ssl/private
+        - name: certs
+          mountPath: /etc/ssl/private
       volumes:
       - name: certs
         secret:

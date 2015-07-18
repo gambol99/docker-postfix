@@ -26,5 +26,8 @@ test:
 		-e TLS_CERT_FILE=/var/run/secrets/postfix.cert \
 		-e TLS_KEY_FILE=/var/run/secrets/postfix.key \
 		${AUTHOR}/${NAME}
+
+usage:
+	sudo docker run -ti --rm --net=host ${AUTHOR}/${NAME} usage
 		
 #-e RELAY_HOST=email-smtp.eu-west-1.amazonaws.com:25 \
