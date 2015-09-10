@@ -1,10 +1,4 @@
 #!/bin/bash
-#
-#   Author: Rohith
-#   Date: 2015-07-17 13:14:06 +0100 (Fri, 17 Jul 2015)
-#
-#  vim:ts=2:sw=2:et
-#
 
 MYHOSTNAME="${MYHOSTNAME:-mail}"
 MYDOMAIN="${MYDOMAIN:-example.com}"
