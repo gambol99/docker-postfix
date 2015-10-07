@@ -1,5 +1,7 @@
 ### *Postfix in a Service* ###
 
+[![Build Status](https://travis-ci.org/UKHomeOffice/docker-postfix.svg?branch=master)](https://travis-ci.org/UKHomeOffice/docker-postfix)
+
 A Postfix container with TLS support
 
 #### **TLS**

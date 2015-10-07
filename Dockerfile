@@ -1,9 +1,3 @@
-#
-#   Author: Rohith
-#   Date: 2015-07-17 12:49:15 +0100 (Fri, 17 Jul 2015)
-#
-#  vim:ts=2:sw=2:et
-#
 FROM gambol99/supervisord
 MAINTAINER Rohith <gambol99@gmail.com>
 

@@ -1,9 +1,4 @@
 #
-#   Author: Rohith
-#   Date: 2015-07-17 12:59:14 +0100 (Fri, 17 Jul 2015)
-#
-#  vim:ts=2:sw=2:et
-#
 # Global Postfix configuration file. This file lists only a subset
 # of all parameters. For the syntax, and for a complete parameter
 # list, see the postconf(5) manual page (command: "man 5 postconf").
